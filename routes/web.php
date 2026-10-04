@@ -25,7 +25,7 @@ Route::post('/login', function () {
 
     // 3. Jika salah, kembalikan ke halaman login bawa pesan error
     return back()->with('error', 'Email atau password salah!');
-
+});
 Route::get('/logout', function () {
     auth()->logout();
     request()->session()->invalidate();
