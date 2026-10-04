@@ -85,21 +85,17 @@
                             <button class="recipe-button" onclick="showRecipe({{ $index }})" style="flex: 1; padding: 10px;">
                                 Lihat
                             </button>
-                            
-                            @if(session('login'))
-                                <!-- Tombol Edit dan Hapus HANYA muncul untuk Admin -->
-                                <a href="/recipes/{{ $recipe->id }}/edit" class="recipe-button" style="flex: 1; text-align: center; text-decoration: none; background: #8b7a7a; padding: 10px; display: inline-block; box-sizing: border-box;">
-                                    Edit
-                                </a>
-                                
-                                <form action="/recipes/{{ $recipe->id }}" method="POST" style="flex: 1; margin: 0;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="recipe-button" style="background: #b44b4b; width: 100%; padding: 10px;" onclick="return confirm('Yakin mau hapus resep ini?')">
-                                        Hapus
-                                    </button>
-                                </form>
-                            @endif
+                           @if(auth()->check() && auth()->user()->role == 'admin')
+    <!-- Tombol Edit Asli -->
+    <a href="/recipes/{{ $recipe->id }}/edit" class="btn-edit">Edit</a>
+    
+    <!-- Tombol Hapus Asli -->
+    <form action="/recipes/{{ $recipe->id }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn-delete" onclick="return confirm('Yakin ingin menghapus resep ini?')">Hapus</button>
+    </form>
+@endif
 
                         </div>
 
