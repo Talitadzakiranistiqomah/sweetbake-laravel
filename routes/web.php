@@ -13,19 +13,23 @@ Route::get('/', function () {
 });
 
 Route::post('/login', function () {
-    $username = request('username');
-    $password = request('password');
+    // 1. Ambil email dan password dari form login
+    $credentials = request()->only('email', 'password');
 
-    if ($username === 'talita' && $password === '12345') {
-        session(['login' => true, 'username' => $username]);
+    // 2. Cek ke database menggunakan sistem bawaan Laravel (Auth)
+    if (auth()->attempt($credentials)) {
+        // Jika cocok, buat sesi keamanan baru dan arahkan ke home
+        request()->session()->regenerate();
         return redirect('/home');
     }
 
-    return back()->with('error', 'Username atau password salah!');
-});
+    // 3. Jika salah, kembalikan ke halaman login bawa pesan error
+    return back()->with('error', 'Email atau password salah!');
 
 Route::get('/logout', function () {
-    session()->flush();
+    auth()->logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
     return redirect('/');
 });
 

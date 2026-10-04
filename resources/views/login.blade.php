@@ -21,8 +21,8 @@
 
         <form action="/login" method="POST">
             @csrf
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Masukkan username" required>
+            <label>Email</label>
+            <input type="text" name="email" placeholder="Masukkan email" required>
             
             <label>Password</label>
             <input type="password" name="password" placeholder="Masukkan password" required>
@@ -32,7 +32,7 @@
 
         <div class="demo-account">
             <strong>Demo Account</strong>
-            <p>Username: talita</p>
+            <p>email: talitadzakirani@gmail.com</p>
             <p>Password: 12345</p>
         </div>
     </div>
