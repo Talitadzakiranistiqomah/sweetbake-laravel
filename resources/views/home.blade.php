@@ -54,9 +54,9 @@
             <p class="section-label">OUR COLLECTION</p>
             <h2>Resep pilihan untukmu</h2>
         </div>
-        @if(auth()->check() && auth()->user()->role == 'admin')
-    <div style="margin: 20px 0;">
-        <a href="/recipes/create" class="btn-tambah">+ Tambah Resep Baru</a>
+@if(auth()->check() && auth()->user()->role == 'admin')
+    <div style="text-align: right; margin: 20px 50px;">
+        <a href="/recipes/create" style="display: inline-block; padding: 12px 24px; background-color: #4A3B32; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">+ Tambah Resep Baru</a>
     </div>
 @endif
         <div class="search-box">
