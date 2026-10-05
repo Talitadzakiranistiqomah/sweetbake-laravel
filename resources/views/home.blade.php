@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SweetBake - Dapur Talita</title>
+    <title>SweetBake by Talita</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -131,7 +131,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="/home" class="logo">🍰 SweetBake</a>
+        <a href="/home" class="logo">👩‍‍🍳 SweetBake by Talita</a>
         <div class="nav-links">
             <a href="/home">Home</a>
             <a href="#katalog">Resep</a>
@@ -146,16 +146,16 @@
         </div>
     </nav>
 
-    <!-- BAGIAN TEKS YANG SUDAH DIREVISI -->
     <header class="hero">
         <div class="hero-text">
-            <div class="welcome-text">WELCOME TO SWEETBAKE, TALITA DZAKIRAN ISTIQOMAH ✨</div>
+            <div class="welcome-text">WELCOME TO SWEETBAKE BY TALITA ✨</div>
             <h1 class="hero-title">Temukan resep<br>hidangan <span>favoritmu.</span></h1>
             <p class="hero-desc">Jelajahi berbagai inspirasi resep kue, dessert, makanan berat, hingga minuman lezat yang mudah dibuat di rumah ala Dapur Talita.</p>
             <a href="#katalog" class="btn-explore">Jelajahi Resep &rarr;</a>
         </div>
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hidangan Lezat">
+            <!-- FOTO SUDAH DIGANTI MENJADI FOTO ESTETIK BERBAGAI HIDANGAN -->
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Berbagai Hidangan Lezat">
         </div>
     </header>
 
