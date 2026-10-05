@@ -35,7 +35,7 @@ class RecipeController extends Controller
 
         Recipe::create([
         'name' => $request->judul,
-        'deskripsi' => $request->description,
+        'description' => $request->deskripsi,
             'bahan' => $request->bahan,
             'langkah' => $request->langkah,
             'image' => $imagePath,
