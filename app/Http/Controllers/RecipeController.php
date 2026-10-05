@@ -44,7 +44,19 @@ class RecipeController extends Controller
         return redirect('/home');
     }
 
-    // FUNGSI BARU UNTUK MENAMPILKAN HALAMAN EDIT
+    // INI FUNGSI SHOW UNTUK MENAMPILKAN DETAIL RESEP
+    public function show($id)
+    {
+        $recipe = Recipe::find($id);
+        
+        // Jika resep tidak ditemukan, kembalikan ke home
+        if (!$recipe) {
+            return redirect('/home');
+        }
+        
+        return view('show', compact('recipe'));
+    }
+
     public function edit($id)
     {
         if (!auth()->check() || auth()->user()->role !== 'admin') {
@@ -54,7 +66,6 @@ class RecipeController extends Controller
         return view('edit', compact('recipe'));
     }
 
-    // FUNGSI BARU UNTUK MENYIMPAN PERUBAHAN EDIT
     public function update(Request $request, $id)
     {
         if (!auth()->check() || auth()->user()->role !== 'admin') {
@@ -83,7 +94,6 @@ class RecipeController extends Controller
         return redirect('/home');
     }
 
-    // FUNGSI HAPUS YANG SUDAH DIPERBAIKI
     public function destroy($id)
     {
         if (!auth()->check() || auth()->user()->role !== 'admin') {
