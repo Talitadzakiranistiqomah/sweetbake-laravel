@@ -34,7 +34,7 @@ class RecipeController extends Controller
         }
 
         Recipe::create([
-        'name' => $request->judul,
+        'name' => $request->name,
         'description' => $request->deskripsi,
             'ingredients' => $request->bahan,
             'steps' => $request->langkah,
