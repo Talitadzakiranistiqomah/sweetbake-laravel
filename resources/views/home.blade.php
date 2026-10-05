@@ -15,10 +15,35 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        h1 {
+        .header-section {
             text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
             color: #db2777;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+        }
+        .btn-tambah {
+            display: inline-block;
+            background-color: #ec4899;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(236, 72, 153, 0.3);
+            transition: background-color 0.3s;
+        }
+        .btn-tambah:hover {
+            background-color: #db2777;
+        }
+        .empty-state {
+            text-align: center;
+            color: #6b7280;
+            padding: 50px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .recipe-grid {
             display: grid;
@@ -81,50 +106,56 @@
         .btn-lihat { background-color: #d6838d; }
         .btn-edit { background-color: #fbbf24; }
         .btn-hapus { background-color: #ef4444; }
-        
-        .delete-form {
-            flex: 1;
-            display: flex;
-        }
-        .delete-form button {
-            width: 100%;
-        }
+        .delete-form { flex: 1; display: flex; }
+        .delete-form button { width: 100%; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Katalog Resep SweetBake</h1>
+        <div class="header-section">
+            <h1>Katalog Resep SweetBake</h1>
+            @if(auth()->check() && auth()->user()->role === 'admin')
+                <a href="/recipes/create" class="btn-tambah">+ Tambah Resep Baru</a>
+            @endif
+        </div>
         
-        <div class="recipe-grid">
-            @foreach($recipes as $recipe)
-            <div class="recipe-card">
-                <img src="{{ asset('storage/' . $recipe->image) }}" alt="{{ $recipe->name }}">
-                <div class="recipe-content">
-                    <h3 class="recipe-title">{{ $recipe->name }}</h3>
-                    <p class="recipe-desc">{{ Str::limit($recipe->description, 50) }}</p>
-                    
-                    <div class="recipe-meta">
-                        <span>⏱ {{ $recipe->time }}</span>
-                        <span>✦ {{ $recipe->difficulty }}</span>
-                    </div>
+        @if($recipes->isEmpty())
+            <div class="empty-state">
+                <h3>Belum ada resep di katalog 🍰</h3>
+                <p>Klik tombol di atas untuk mulai membagikan resep andalanmu!</p>
+            </div>
+        @else
+            <div class="recipe-grid">
+                @foreach($recipes as $recipe)
+                <div class="recipe-card">
+                    <img src="{{ asset('storage/' . $recipe->image) }}" alt="{{ $recipe->name }}">
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">{{ $recipe->name }}</h3>
+                        <p class="recipe-desc">{{ Str::limit($recipe->description, 50) }}</p>
+                        
+                        <div class="recipe-meta">
+                            <span>⏱ {{ $recipe->time }}</span>
+                            <span>✦ {{ $recipe->difficulty }}</span>
+                        </div>
 
-                    <div class="action-buttons">
-                        <a href="/recipes/{{ $recipe->id }}" class="btn btn-lihat">Lihat</a>
-                        
-                        @if(auth()->check() && auth()->user()->role === 'admin')
-                        <a href="/recipes/{{ $recipe->id }}/edit" class="btn btn-edit">Edit</a>
-                        
-                        <form action="/recipes/{{ $recipe->id }}" method="POST" class="delete-form" onsubmit="return confirm('Yakin ingin menghapus resep ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-hapus">Hapus</button>
-                        </form>
-                        @endif
+                        <div class="action-buttons">
+                            <a href="/recipes/{{ $recipe->id }}" class="btn btn-lihat">Lihat</a>
+                            
+                            @if(auth()->check() && auth()->user()->role === 'admin')
+                            <a href="/recipes/{{ $recipe->id }}/edit" class="btn btn-edit">Edit</a>
+                            
+                            <form action="/recipes/{{ $recipe->id }}" method="POST" class="delete-form" onsubmit="return confirm('Yakin ingin menghapus resep ini?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-hapus">Hapus</button>
+                            </form>
+                            @endif
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
+        @endif
     </div>
 </body>
 </html>
