@@ -9,11 +9,37 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #fdf2f8;
             margin: 0;
-            padding: 20px;
+            /* Padding atas dihapus agar header nempel di ujung layar */
         }
+
+        /* --- STYLING UNTUK COVER / NAVBAR ATAS --- */
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: #4a2c2a; /* Warna cokelat gelap */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar-brand span.pink {
+            color: #db2777;
+        }
+        .navbar-brand span.brown {
+            color: #e09f8e; /* Warna cokelat muda kemerahan */
+        }
+        /* ----------------------------------------- */
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px 40px 20px;
         }
         .header-section {
             text-align: center;
@@ -111,6 +137,14 @@
     </style>
 </head>
 <body>
+    
+    <!-- COVER / NAVBAR ATAS -->
+    <div class="navbar">
+        <a href="/home" class="navbar-brand">
+            🍰 <span class="pink">Sweet</span><span class="brown">Bake</span>
+        </a>
+    </div>
+
     <div class="container">
         <div class="header-section">
             <h1>Katalog Resep SweetBake</h1>
