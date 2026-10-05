@@ -34,6 +34,7 @@ class RecipeController extends Controller
             'category' => $request->category,
             'difficulty' => $request->difficulty,
             'time' => $request->time,
+            'tools' => $request->tools,
             'description' => $request->deskripsi,
             'ingredients' => $request->bahan,
             'steps' => $request->langkah,

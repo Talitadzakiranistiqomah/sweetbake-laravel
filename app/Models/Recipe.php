@@ -14,6 +14,7 @@ class Recipe extends Model
         'category',
         'difficulty',
         'time',
+        'tools',
         'description',
         'ingredients',
         'steps',

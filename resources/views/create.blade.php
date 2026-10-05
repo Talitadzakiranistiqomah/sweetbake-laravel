@@ -99,6 +99,11 @@
                 <label>Waktu Pembuatan</label>
                 <input type="text" name="time" required placeholder="Contoh: 45 Menit">
             </div>
+            
+            <div class="form-group">
+                <label>Alat-alat</label>
+                <textarea name="tools" rows="3" required placeholder="Masukkan alat yang dibutuhkan"></textarea>
+            </div>
 
             <div class="form-group">
                 <label>Deskripsi</label>
