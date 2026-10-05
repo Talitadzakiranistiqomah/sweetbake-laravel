@@ -12,7 +12,7 @@
         .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; text-decoration: none; color: #3b2a2a; display: flex; align-items: center; gap: 8px; }
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #d88989; font-weight: 500; font-size: 15px; }
-        .btn-login { background-color: #382525; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; }
+        .btn-login { background-color: #382525; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; }
 
         .hero { display: flex; justify-content: space-between; align-items: center; padding: 80px 10%; }
         .hero-text { max-width: 50%; }
@@ -28,7 +28,6 @@
         .header-section { text-align: center; margin-bottom: 20px; }
         .btn-tambah { display: inline-block; background-color: #ec4899; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
         
-        /* CSS UNTUK TOMBOL FILTER */
         .filter-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
         .btn-filter { padding: 10px 20px; border-radius: 30px; background-color: #fdf2f8; color: #db2777; text-decoration: none; font-weight: 500; border: 1px solid #fbcfe8; transition: all 0.3s ease; }
         .btn-filter:hover { background-color: #fbcfe8; }
@@ -57,14 +56,14 @@
         <div class="nav-links">
             <a href="/home">Home</a>
             <a href="#katalog">Resep</a>
+            
+            <!-- TOMBOL LOGOUT SUDAH DIPERBAIKI MENJADI LINK BIASA -->
             @if(auth()->check() && auth()->user()->role === 'admin')
-                <form action="/logout" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="btn-login" style="border:none; cursor:pointer;">Logout</button>
-                </form>
+                <a href="/logout" class="btn-login">Logout</a>
             @else
                 <a href="/login" class="btn-login">Login Admin</a>
             @endif
+            
         </div>
     </nav>
 
@@ -88,18 +87,17 @@
             @endif
         </div>
 
-        <!-- TOMBOL FILTER KATEGORI -->
         <div class="filter-container">
             <a href="/home#katalog" class="btn-filter {{ empty($kategoriPilihan) ? 'active' : '' }}">Semua Resep</a>
-            <a href="/home?category=Resep Kue#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Kue' ? 'active' : '' }}">Kue</a>
-            <a href="/home?category=Resep Dessert#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Dessert' ? 'active' : '' }}">Dessert</a>
-            <a href="/home?category=Resep Makanan Berat#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Makanan Berat' ? 'active' : '' }}">Makanan Berat</a>
-            <a href="/home?category=Resep Minuman#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Minuman' ? 'active' : '' }}">Minuman</a>
+            <a href="/home?category=Resep Kue#katalog" class="btn-filter {{ (isset($kategoriPilihan) && $kategoriPilihan == 'Resep Kue') ? 'active' : '' }}">Kue</a>
+            <a href="/home?category=Resep Dessert#katalog" class="btn-filter {{ (isset($kategoriPilihan) && $kategoriPilihan == 'Resep Dessert') ? 'active' : '' }}">Dessert</a>
+            <a href="/home?category=Resep Makanan Berat#katalog" class="btn-filter {{ (isset($kategoriPilihan) && $kategoriPilihan == 'Resep Makanan Berat') ? 'active' : '' }}">Makanan Berat</a>
+            <a href="/home?category=Resep Minuman#katalog" class="btn-filter {{ (isset($kategoriPilihan) && $kategoriPilihan == 'Resep Minuman') ? 'active' : '' }}">Minuman</a>
         </div>
         
         @if(isset($recipes) && $recipes->isEmpty())
             <div class="empty-state">
-                @if($kategoriPilihan)
+                @if(isset($kategoriPilihan) && $kategoriPilihan)
                     <h3>Belum ada resep untuk kategori {{ $kategoriPilihan }} 🍽️</h3>
                     <p>Silakan pilih kategori lain atau tambah resep baru!</p>
                 @else
