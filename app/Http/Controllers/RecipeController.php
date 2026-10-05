@@ -15,10 +15,7 @@ class RecipeController extends Controller
 
     public function create()
     {
-        if (!auth()->check() || auth()->user()->role !== 'admin') {
-            return redirect('/login');
-        }
-        return view('create'); // Sesuaikan nama file view form tambah resep aslimu (misal: recipes.create atau create)
+        return view('create');
     }
 
     public function store(Request $request)
@@ -27,16 +24,16 @@ class RecipeController extends Controller
             return redirect('/login');
         }
 
-        // Simpan data resep & foto seperti semula
         $imagePath = '';
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('recipes', 'public');
         }
 
         Recipe::create([
-        'name' => $request->name,
-        'category' => $request->category,
-        'description' => $request->deskripsi,
+            'name' => $request->name,
+            'category' => $request->category,
+            'time' => $request->time,
+            'description' => $request->deskripsi,
             'ingredients' => $request->bahan,
             'steps' => $request->langkah,
             'image' => $imagePath,
@@ -50,10 +47,12 @@ class RecipeController extends Controller
         if (!auth()->check() || auth()->user()->role !== 'admin') {
             return redirect('/login');
         }
-
-        $recipe = Recipe::findOrFail($id);
-        $recipe->delete();
-
+        
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            $recipe->delete();
+        }
+        
         return redirect('/home');
     }
 }
