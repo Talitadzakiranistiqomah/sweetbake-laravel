@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SweetBake - Dapur Talita</title>
-    <!-- Font dari Google Fonts agar mirip dengan desain aslimu -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -15,8 +14,6 @@
             background: linear-gradient(to right, #ffffff, #fdf2f8);
             color: #3b2a2a;
         }
-
-        /* --- NAVBAR --- */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -35,17 +32,8 @@
             align-items: center;
             gap: 8px;
         }
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #d88989;
-            font-weight: 500;
-            font-size: 15px;
-        }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #d88989; font-weight: 500; font-size: 15px; }
         .btn-login {
             background-color: #382525;
             color: white !important;
@@ -54,16 +42,13 @@
             font-weight: 600;
         }
 
-        /* --- HERO SECTION (Tampilan Atas) --- */
         .hero {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 80px 10%;
         }
-        .hero-text {
-            max-width: 50%;
-        }
+        .hero-text { max-width: 50%; }
         .welcome-text {
             color: #d68f8f;
             font-size: 12px;
@@ -79,9 +64,7 @@
             margin: 0 0 20px 0;
             color: #382525;
         }
-        .hero-title span {
-            color: #df9898;
-        }
+        .hero-title span { color: #df9898; }
         .hero-desc {
             font-size: 15px;
             color: #7a6b6b;
@@ -104,21 +87,10 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- KATALOG SECTION (Bagian Bawah) --- */
-        .katalog-section {
-            padding: 60px 10%;
-            background: white;
-        }
-        .header-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        .katalog-section { padding: 60px 10%; background: white; }
+        .header-section { text-align: center; margin-bottom: 40px; }
         .btn-tambah {
             display: inline-block;
             background-color: #ec4899;
@@ -158,7 +130,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <a href="/home" class="logo">🍰 SweetBake</a>
         <div class="nav-links">
@@ -175,21 +146,19 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Tampilan Atas Asli) -->
+    <!-- BAGIAN TEKS YANG SUDAH DIREVISI -->
     <header class="hero">
         <div class="hero-text">
             <div class="welcome-text">WELCOME TO SWEETBAKE, TALITA DZAKIRAN ISTIQOMAH ✨</div>
-            <h1 class="hero-title">Temukan resep<br>kue <span>favoritmu.</span></h1>
-            <p class="hero-desc">Jelajahi berbagai resep kue sederhana, lezat, dan mudah dibuat di rumah ala Dapur Talita.</p>
+            <h1 class="hero-title">Temukan resep<br>hidangan <span>favoritmu.</span></h1>
+            <p class="hero-desc">Jelajahi berbagai inspirasi resep kue, dessert, makanan berat, hingga minuman lezat yang mudah dibuat di rumah ala Dapur Talita.</p>
             <a href="#katalog" class="btn-explore">Jelajahi Resep &rarr;</a>
         </div>
         <div class="hero-image">
-            <!-- Ganti URL ini dengan URL gambar kue cokelat aslimu jika ada -->
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kue Cokelat">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hidangan Lezat">
         </div>
     </header>
 
-    <!-- KATALOG SECTION (Fitur yang baru kita buat) -->
     <section class="katalog-section" id="katalog">
         <div class="header-section">
             <h2 style="font-family: 'Playfair Display', serif; font-size: 36px; color: #382525; margin-bottom: 15px;">Katalog Resep</h2>
@@ -200,7 +169,7 @@
         
         @if(isset($recipes) && $recipes->isEmpty())
             <div class="empty-state">
-                <h3>Belum ada resep di katalog 🍰</h3>
+                <h3>Belum ada resep di katalog 🍽️</h3>
                 <p>Klik tombol di atas untuk mulai membagikan resep andalanmu!</p>
             </div>
         @elseif(isset($recipes))
