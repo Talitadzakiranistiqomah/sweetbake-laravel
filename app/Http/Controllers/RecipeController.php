@@ -7,10 +7,21 @@ use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
-    public function index()
+    // FUNGSI INDEX DIUPDATE UNTUK FITUR FILTER KATEGORI
+    public function index(Request $request)
     {
-        $recipes = Recipe::all();
-        return view('home', compact('recipes'));
+        // Tangkap kategori yang diklik dari URL
+        $kategoriPilihan = $request->query('category');
+
+        if ($kategoriPilihan) {
+            // Jika ada tombol kategori yang diklik, tampilkan resep sesuai kategorinya
+            $recipes = Recipe::where('category', $kategoriPilihan)->get();
+        } else {
+            // Jika tidak ada yang diklik (Semua), tampilkan semuanya
+            $recipes = Recipe::all();
+        }
+
+        return view('home', compact('recipes', 'kategoriPilihan'));
     }
 
     public function create()
@@ -44,12 +55,10 @@ class RecipeController extends Controller
         return redirect('/home');
     }
 
-    // INI FUNGSI SHOW UNTUK MENAMPILKAN DETAIL RESEP
     public function show($id)
     {
         $recipe = Recipe::find($id);
         
-        // Jika resep tidak ditemukan, kembalikan ke home
         if (!$recipe) {
             return redirect('/home');
         }

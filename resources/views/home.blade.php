@@ -7,113 +7,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #ffffff, #fdf2f8);
-            color: #3b2a2a;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #3b2a2a;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: linear-gradient(to right, #ffffff, #fdf2f8); color: #3b2a2a; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; text-decoration: none; color: #3b2a2a; display: flex; align-items: center; gap: 8px; }
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #d88989; font-weight: 500; font-size: 15px; }
-        .btn-login {
-            background-color: #382525;
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-        }
+        .btn-login { background-color: #382525; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; }
 
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 80px 10%;
-        }
+        .hero { display: flex; justify-content: space-between; align-items: center; padding: 80px 10%; }
         .hero-text { max-width: 50%; }
-        .welcome-text {
-            color: #d68f8f;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 64px;
-            line-height: 1.1;
-            margin: 0 0 20px 0;
-            color: #382525;
-        }
+        .welcome-text { color: #d68f8f; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 64px; line-height: 1.1; margin: 0 0 20px 0; color: #382525; }
         .hero-title span { color: #df9898; }
-        .hero-desc {
-            font-size: 15px;
-            color: #7a6b6b;
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-        .btn-explore {
-            background-color: #382525;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .hero-image {
-            width: 380px;
-            height: 380px;
-            border-radius: 50%;
-            border: 15px solid white;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+        .hero-desc { font-size: 15px; color: #7a6b6b; margin-bottom: 35px; line-height: 1.6; }
+        .btn-explore { background-color: #382525; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 500; }
+        .hero-image { width: 380px; height: 380px; border-radius: 50%; border: 15px solid white; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; }
 
         .katalog-section { padding: 60px 10%; background: white; }
-        .header-section { text-align: center; margin-bottom: 40px; }
-        .btn-tambah {
-            display: inline-block;
-            background-color: #ec4899;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .recipe-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .recipe-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #f3f4f6;
-        }
+        .header-section { text-align: center; margin-bottom: 20px; }
+        .btn-tambah { display: inline-block; background-color: #ec4899; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        
+        /* CSS UNTUK TOMBOL FILTER */
+        .filter-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .btn-filter { padding: 10px 20px; border-radius: 30px; background-color: #fdf2f8; color: #db2777; text-decoration: none; font-weight: 500; border: 1px solid #fbcfe8; transition: all 0.3s ease; }
+        .btn-filter:hover { background-color: #fbcfe8; }
+        .btn-filter.active { background-color: #db2777; color: white; border-color: #db2777; box-shadow: 0 4px 10px rgba(219, 39, 119, 0.3); }
+
+        .recipe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .recipe-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid #f3f4f6; }
         .recipe-card img { width: 100%; height: 220px; object-fit: cover; }
         .recipe-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         .recipe-title { font-family: 'Playfair Display', serif; font-size: 24px; color: #333; margin: 0 0 10px 0; }
@@ -131,7 +53,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="/home" class="logo">👩‍‍🍳 SweetBake by Talita</a>
+        <a href="/home" class="logo">👩‍🍳 SweetBake by Talita</a>
         <div class="nav-links">
             <a href="/home">Home</a>
             <a href="#katalog">Resep</a>
@@ -154,7 +76,6 @@
             <a href="#katalog" class="btn-explore">Jelajahi Resep &rarr;</a>
         </div>
         <div class="hero-image">
-            <!-- FOTO SUDAH DIGANTI MENJADI FOTO ESTETIK BERBAGAI HIDANGAN -->
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Berbagai Hidangan Lezat">
         </div>
     </header>
@@ -166,11 +87,25 @@
                 <a href="/recipes/create" class="btn-tambah">+ Tambah Resep Baru</a>
             @endif
         </div>
+
+        <!-- TOMBOL FILTER KATEGORI -->
+        <div class="filter-container">
+            <a href="/home#katalog" class="btn-filter {{ empty($kategoriPilihan) ? 'active' : '' }}">Semua Resep</a>
+            <a href="/home?category=Resep Kue#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Kue' ? 'active' : '' }}">Kue</a>
+            <a href="/home?category=Resep Dessert#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Dessert' ? 'active' : '' }}">Dessert</a>
+            <a href="/home?category=Resep Makanan Berat#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Makanan Berat' ? 'active' : '' }}">Makanan Berat</a>
+            <a href="/home?category=Resep Minuman#katalog" class="btn-filter {{ $kategoriPilihan == 'Resep Minuman' ? 'active' : '' }}">Minuman</a>
+        </div>
         
         @if(isset($recipes) && $recipes->isEmpty())
             <div class="empty-state">
-                <h3>Belum ada resep di katalog 🍽️</h3>
-                <p>Klik tombol di atas untuk mulai membagikan resep andalanmu!</p>
+                @if($kategoriPilihan)
+                    <h3>Belum ada resep untuk kategori {{ $kategoriPilihan }} 🍽️</h3>
+                    <p>Silakan pilih kategori lain atau tambah resep baru!</p>
+                @else
+                    <h3>Belum ada resep di katalog 🍽️</h3>
+                    <p>Klik tombol di atas untuk mulai membagikan resep andalanmu!</p>
+                @endif
             </div>
         @elseif(isset($recipes))
             <div class="recipe-grid">
