@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Resep - SweetBake</title>
-    <!-- Jika sebelumnya kamu punya file CSS eksternal, biasanya kodenya seperti ini: -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
     <style>
         body.home-body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fdf2f8; /* Warna background pink pastel */
+            background-color: #fdf2f8;
             padding: 40px 20px;
             color: #333;
         }
@@ -24,7 +21,7 @@
         }
         .form-container h2 {
             text-align: center;
-            color: #db2777; /* Warna teks pink gelap */
+            color: #db2777;
             margin-bottom: 25px;
         }
         .form-group {
@@ -37,6 +34,7 @@
             color: #4b5563;
         }
         .form-group input[type="text"],
+        .form-group select,
         .form-group textarea,
         .form-group input[type="file"] {
             width: 100%;
@@ -47,6 +45,7 @@
             font-family: inherit;
         }
         .form-group input[type="text"]:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #f472b6;
@@ -84,6 +83,16 @@
             <div class="form-group">
                 <label>Kategori</label>
                 <input type="text" name="category" required placeholder="Contoh: Kue Cokelat">
+            </div>
+
+            <div class="form-group">
+                <label>Tingkat Kesulitan</label>
+                <select name="difficulty" required>
+                    <option value="">Pilih Tingkat Kesulitan</option>
+                    <option value="Mudah">Mudah</option>
+                    <option value="Sedang">Sedang</option>
+                    <option value="Sulit">Sulit</option>
+                </select>
             </div>
 
             <div class="form-group">
