@@ -14,14 +14,14 @@
         .nav-links a { text-decoration: none; color: #d88989; font-weight: 500; font-size: 15px; }
         .btn-login { background-color: #382525; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; }
 
-        .hero { display: flex; justify-content: space-between; align-items: center; padding: 80px 10%; }
+        .hero { display: flex; justify-content: space-between; align-items: center; padding: 80px 10%; gap: 40px; }
         .hero-text { max-width: 50%; }
         .welcome-text { color: #d68f8f; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; }
         .hero-title { font-family: 'Playfair Display', serif; font-size: 64px; line-height: 1.1; margin: 0 0 20px 0; color: #382525; }
         .hero-title span { color: #df9898; }
         .hero-desc { font-size: 15px; color: #7a6b6b; margin-bottom: 35px; line-height: 1.6; }
-        .btn-explore { background-color: #382525; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 500; }
-        .hero-image { width: 380px; height: 380px; border-radius: 50%; border: 15px solid white; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .btn-explore { background-color: #382525; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 500; display: inline-block;}
+        .hero-image { width: 380px; height: 380px; border-radius: 50%; border: 15px solid white; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); flex-shrink: 0; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; }
 
         .katalog-section { padding: 60px 10%; background: white; }
@@ -38,15 +38,53 @@
         .recipe-card img { width: 100%; height: 220px; object-fit: cover; }
         .recipe-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         .recipe-title { font-family: 'Playfair Display', serif; font-size: 24px; color: #333; margin: 0 0 10px 0; }
-        .recipe-meta { font-size: 13px; color: #9ca3af; margin-bottom: 20px; display: flex; gap: 15px; }
-        .action-buttons { display: flex; gap: 8px; margin-top: auto; }
-        .btn { flex: 1; text-align: center; padding: 10px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 14px; border: none; color: white; cursor: pointer;}
+        .recipe-meta { font-size: 13px; color: #9ca3af; margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .action-buttons { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap; }
+        .btn { flex: 1; text-align: center; padding: 10px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 14px; border: none; color: white; cursor: pointer; min-width: 60px;}
         .btn-lihat { background-color: #d6838d; }
         .btn-edit { background-color: #fbbf24; }
         .btn-hapus { background-color: #ef4444; }
-        .delete-form { flex: 1; display: flex; }
+        .delete-form { flex: 1; display: flex; min-width: 60px; }
         .delete-form button { width: 100%; }
         .empty-state { text-align: center; color: #6b7280; padding: 50px; background: #fdf2f8; border-radius: 12px; }
+
+        /* --- KODE RESPONSIVE UNTUK HP --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .hero {
+                flex-direction: column; /* Mengubah susunan jadi ke bawah */
+                text-align: center;     /* Membuat tulisan ke tengah */
+                padding: 40px 20px;
+                gap: 30px;
+            }
+            .hero-text {
+                max-width: 100%;
+            }
+            .hero-title {
+                font-size: 42px; /* Mengecilkan ukuran font agar muat di layar HP */
+            }
+            .hero-image {
+                width: 260px; /* Mengecilkan gambar */
+                height: 260px;
+                margin: 0 auto; /* Memastikan gambar berada di tengah */
+            }
+            .katalog-section {
+                padding: 40px 20px;
+            }
+            .recipe-grid {
+                grid-template-columns: 1fr; /* 1 kolom penuh di layar HP */
+            }
+        }
     </style>
 </head>
 <body>
@@ -57,7 +95,6 @@
             <a href="/home">Home</a>
             <a href="#katalog">Resep</a>
             
-            <!-- TOMBOL LOGOUT SUDAH DIPERBAIKI MENJADI LINK BIASA -->
             @if(auth()->check() && auth()->user()->role === 'admin')
                 <a href="/logout" class="btn-login">Logout</a>
             @else
